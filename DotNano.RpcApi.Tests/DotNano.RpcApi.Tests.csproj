@@ -4,6 +4,12 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <ApplicationIcon />
+
+    <OutputType>Library</OutputType>
+
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNano.RpcApi\DotNano.RpcApi.csproj" />
+    <ProjectReference Include="..\DotNano.Shared\DotNano.Shared.csproj" />
   </ItemGroup>
 
 </Project>
