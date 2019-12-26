@@ -1,8 +1,10 @@
 ﻿using DotNano.CodeGeneration;
+using DotNano.RpcDocParser;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 
-namespace DotNano.RpcDocParser
+namespace DotNano.Executor
 {
     class Program
     {
@@ -10,11 +12,12 @@ namespace DotNano.RpcDocParser
         {
             using (var webClient = new WebClient())
             {
-                var mdDoc = webClient.DownloadString("https://raw.githubusercontent.com/nanocurrency/nano-docs/master/docs/commands/rpc-protocol.md");
+                var docUrl = ConfigurationManager.AppSettings["RpcDocUri"];
+                var mdDoc = webClient.DownloadString(docUrl);
 
                 var parser = new RpcMdParser();
                 var result = parser.Parse(mdDoc);
-                
+
                 var docAnalyzer = new DocAnalyzer(new JsonAnalyzer());
                 var rpcCalls = docAnalyzer.Analyze(result).ToList();
 

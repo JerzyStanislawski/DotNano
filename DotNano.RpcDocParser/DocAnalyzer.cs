@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DotNano.RpcDocParser
 {
-    class DocAnalyzer
+    public class DocAnalyzer
     {
         private readonly JsonAnalyzer _jsonAnalyzer;
 

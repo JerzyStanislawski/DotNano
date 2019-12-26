@@ -9,7 +9,7 @@ using System.Numerics;
 
 namespace DotNano.RpcDocParser
 {
-    class JsonAnalyzer
+    public class JsonAnalyzer
     {
         public SimpleJson Convert(string json)
         {

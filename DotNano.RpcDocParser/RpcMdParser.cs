@@ -9,11 +9,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-[assembly: InternalsVisibleTo("DotNano.CodeGeneration.Tests")]
-[assembly: InternalsVisibleTo("DotNano.RpcDocParser.Tests")]
 namespace DotNano.RpcDocParser
 {
-    class RpcMdParser
+    public class RpcMdParser
     {
         enum ParsingState
         {

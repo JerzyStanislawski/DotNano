@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <StartupObject>DotNano.RpcDocParser.Program</StartupObject>
+    <StartupObject></StartupObject>
     <ApplicationIcon />
   </PropertyGroup>
 
