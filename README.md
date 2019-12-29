@@ -29,6 +29,5 @@ You can regenerate NanoRpcClient class by running DotNano.Executor applciation. 
 Method names are camel case of original RPC methods, e.g. account_history => AccountHistory.
 
 ### Donate
-<a href="nano:nano_3rihs8dcjne3tjummjeotsz8r5aj319huj8xfm6rj16pfyjjri3duzxhionx"><img src="https://user-images.githubusercontent.com/49572068/71561816-fbad3d00-2a7b-11ea-9717-8115fa81e856.png"  height="100" width="100">
-</a>
-nano_3rihs8dcjne3tjummjeotsz8r5aj319huj8xfm6rj16pfyjjri3duzxhionx
+[<img src="https://user-images.githubusercontent.com/49572068/71561816-fbad3d00-2a7b-11ea-9717-8115fa81e856.png"  height="100" width="100"/>
+nano_3rihs8dcjne3tjummjeotsz8r5aj319huj8xfm6rj16pfyjjri3duzxhionx](nano:nano_3rihs8dcjne3tjummjeotsz8r5aj319huj8xfm6rj16pfyjjri3duzxhionx)
