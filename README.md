@@ -16,7 +16,12 @@ Console.WriteLine(response.Balance);
 ```
 
 ## Supported RPC methods
+
 All RPC methods are supported.  
 They are defined in official [Nano Docs](https://docs.nano.org/commands/rpc-protocol/).
 
 You can regenerate NanoRpcClient class by running DotNano.Executor applciation. The code is generated based on [Nano Docs](https://docs.nano.org/commands/rpc-protocol/) for easy update.
+
+### Naming convention
+
+Method names are camel case of original RPC methods, e.g. account_history => AccountHistory.
