@@ -1,3 +1,5 @@
+<img src="https://avatars2.githubusercontent.com/u/34106716?s=200&v=4" height="150" width="150">
+
 # DotNano
 Complete .NET API for Nano RPC protocol.
 
