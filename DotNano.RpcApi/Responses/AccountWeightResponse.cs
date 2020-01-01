@@ -7,7 +7,7 @@ namespace DotNano.RpcApi.Responses
 {
     public class AccountWeightResponse
     {
-        public Int64 Weight
+        public BigInteger Weight
         {
             get;
             set;

@@ -7,13 +7,13 @@ namespace DotNano.RpcApi.Responses
 {
     public class WalletInfoResponse
     {
-        public Int64 Balance
+        public BigInteger Balance
         {
             get;
             set;
         }
 
-        public Int64 Pending
+        public BigInteger Pending
         {
             get;
             set;
