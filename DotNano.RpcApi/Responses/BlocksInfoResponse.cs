@@ -78,7 +78,7 @@ namespace DotNano.RpcApi.Responses
             set;
         }
 
-        public Nullable<Int64> Pending
+        public Nullable<BigInteger> Pending
         {
             get;
             set;

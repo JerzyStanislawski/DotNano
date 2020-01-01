@@ -62,7 +62,7 @@ namespace DotNano.RpcDocParser
             foreach (var field in allFields)
             {
                 var type = field.First().Value;
-                if (field.Count() < responseJsons.Count() && type.IsPrimitive)
+                if (field.Count() < responseJsons.Count() && type.IsValueType)
                     resultJson.Fields.Add(field.Key, typeof(Nullable<>).MakeGenericType(type));
                 else
                     resultJson.Fields.Add(field.Key, type);

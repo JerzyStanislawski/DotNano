@@ -61,13 +61,13 @@ namespace DotNano.RpcApi.Responses
             set;
         }
 
-        public BigInteger Weight
+        public Nullable<BigInteger> Weight
         {
             get;
             set;
         }
 
-        public BigInteger Pending
+        public Nullable<BigInteger> Pending
         {
             get;
             set;

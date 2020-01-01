@@ -197,21 +197,11 @@ namespace DotNano.RpcDocParser.Tests
             Assert.Equal(typeof(long?), block.Fields["local_timestamp"]);
             Assert.Equal(typeof(bool?), block.Fields["confirmed"]);
             Assert.Equal(typeof(string), block.Fields["subtype"]);
-            Assert.Equal(typeof(long?), block.Fields["pending"]);
+            Assert.Equal(typeof(BigInteger?), block.Fields["pending"]);
             Assert.Equal(typeof(PublicAddress), block.Fields["source_account"]);
 
             var blockContent = block.Fields["contents"];
             Assert.Equal(typeof(BlockContent), blockContent);
-            //Assert.Equal(typeof(string), blockContent.Fields["type"]);
-            //Assert.Equal(typeof(PublicAddress), blockContent.Fields["account"]);
-            //Assert.Equal(typeof(HexKey64), blockContent.Fields["previous"]);
-            //Assert.Equal(typeof(PublicAddress), blockContent.Fields["representative"]);
-            //Assert.Equal(typeof(BigInteger), blockContent.Fields["balance"]);
-            //Assert.Equal(typeof(HexKey64), blockContent.Fields["link"]);
-            //Assert.Equal(typeof(PublicAddress), blockContent.Fields["link_as_account"]);
-            //Assert.Equal(typeof(HexKey128), blockContent.Fields["signature"]);
-            //Assert.Equal(typeof(string), blockContent.Fields["work"]);
-
         }
     }
 }

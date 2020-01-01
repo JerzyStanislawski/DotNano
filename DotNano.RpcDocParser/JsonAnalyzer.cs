@@ -26,10 +26,11 @@ namespace DotNano.RpcDocParser
                 {
                     var type = TypeFromJValue(jValue);
                     var keyType = TypeFromValue(token.Key);
+                    var finalFieldType = VerifyFieldType(type, token.Key);
                     var fieldName = GetFieldName(token.Key, keyType);
 
                     if (!targetJson.Fields.ContainsKey(fieldName) && fieldName != "action")
-                        targetJson.Fields.Add(fieldName, type);
+                        targetJson.Fields.Add(fieldName, finalFieldType);
                     continue;
                 }
 
@@ -74,7 +75,7 @@ namespace DotNano.RpcDocParser
 
             return targetJson;
         }
-
+        
         private bool IsPredefinedType(SimpleJson json, out Type predefinedType)
         {
             predefinedType = null;
@@ -101,6 +102,14 @@ namespace DotNano.RpcDocParser
                 return PublicAddress.Default;
 
             return actualFieldName;
+        }
+
+        private Type VerifyFieldType(Type type, string fieldName)
+        {
+            if (type == typeof(long) && (fieldName == "balance" || fieldName == "pending" || fieldName == "weight"))
+                return typeof(BigInteger);
+
+            return type;
         }
 
         private Type TypeFromJValue(JValue jValue)

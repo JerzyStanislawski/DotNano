@@ -42,7 +42,7 @@ namespace DotNano.RpcApi.Responses
             set;
         }
 
-        public Int64 Balance
+        public BigInteger Balance
         {
             get;
             set;
@@ -66,13 +66,13 @@ namespace DotNano.RpcApi.Responses
             set;
         }
 
-        public Nullable<Int64> Weight
+        public Nullable<BigInteger> Weight
         {
             get;
             set;
         }
 
-        public Nullable<Int64> Pending
+        public Nullable<BigInteger> Pending
         {
             get;
             set;
