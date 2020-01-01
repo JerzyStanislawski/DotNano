@@ -75,17 +75,18 @@ namespace DotNano.CodeGeneration
                                     SyntaxFactory.Identifier("response"))
                                 .WithInitializer(
                                     SyntaxFactory.EqualsValueClause(
-                                        SyntaxFactory.InvocationExpression(
-                                            SyntaxFactory.IdentifierName("CallRpcMethod"))
+                                        SyntaxFactory.AwaitExpression(
+                                            SyntaxFactory.InvocationExpression(
+                                                SyntaxFactory.IdentifierName("CallRpcMethod"))
                                         .WithArgumentList(
                                             SyntaxFactory.ArgumentList(
-                                                SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                                                SyntaxFactory.SingletonSeparatedList(
                                                     SyntaxFactory.Argument(
                                                         SyntaxFactory.InvocationExpression(
                                                             SyntaxFactory.MemberAccessExpression(
                                                                 SyntaxKind.SimpleMemberAccessExpression,
                                                                 SyntaxFactory.IdentifierName("jobject"),
-                                                                SyntaxFactory.IdentifierName("ToString"))))))))))));
+                                                                SyntaxFactory.IdentifierName("ToString")))))))))))));
         }
 
         private IEnumerable<StatementSyntax> CreateJsonObject(RpcCallCodeDefinition rpcCall)
@@ -204,11 +205,12 @@ namespace DotNano.CodeGeneration
             }
 
             return SyntaxFactory.MethodDeclaration(
-                            SyntaxFactory.IdentifierName($"{methodName}Response"),
+                            SyntaxFactory.IdentifierName($"Task<{methodName}Response>"),
                             SyntaxFactory.Identifier(methodName))
                         .WithModifiers(
                             SyntaxFactory.TokenList(
-                                SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
+                                SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                                SyntaxFactory.Token(SyntaxKind.AsyncKeyword)))
                         .WithParameterList(
                             SyntaxFactory.ParameterList(parameters));
         }
