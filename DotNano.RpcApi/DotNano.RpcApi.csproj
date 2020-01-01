@@ -5,12 +5,12 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>0.2.0</Version>
+    <Version>0.3</Version>
     <Authors>Jerzy Stanislawski</Authors>
     <Company />
     <Description>Full .NET API library for Nano cryptocurrency RPC protocol.</Description>
     <PackageProjectUrl>https://github.com/JerzyStanislawski/DotNano</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/JerzyStanislawski/DotNano.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/JerzyStanislawski/DotNano</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>Nano Nanocurrency Cryptocurrency</PackageTags>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
