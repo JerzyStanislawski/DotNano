@@ -5,7 +5,7 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>0.1.1</Version>
+    <Version>0.2.0</Version>
     <Authors>Jerzy Stanislawski</Authors>
     <Company />
     <Description>Full .NET API library for Nano cryptocurrency RPC protocol.</Description>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DotNano.Shared\DotNano.Shared.csproj" >
+    <ProjectReference Include="..\DotNano.Shared\DotNano.Shared.csproj">
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
       <IncludeAssets>DotNano.Shared.dll</IncludeAssets>
     </ProjectReference>
@@ -35,7 +35,7 @@
 
   <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
     </ItemGroup>
   </Target>
   
