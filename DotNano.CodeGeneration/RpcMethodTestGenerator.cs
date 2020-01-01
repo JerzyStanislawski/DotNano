@@ -41,14 +41,17 @@ namespace DotNano.CodeGeneration
                                     SyntaxFactory.Identifier("response"))
                                 .WithInitializer(
                                     SyntaxFactory.EqualsValueClause(
-                                        SyntaxFactory.InvocationExpression(
-                                            SyntaxFactory.MemberAccessExpression(
-                                                SyntaxKind.SimpleMemberAccessExpression,
-                                                SyntaxFactory.IdentifierName("_nanoRpcClient"),
-                                                SyntaxFactory.IdentifierName(Tools.ToPascalCase(rpcCall.MethodName))))
-                                        .WithArgumentList(
-                                            SyntaxFactory.ArgumentList(
-                                                SyntaxFactory.SeparatedList(parameters))))))));
+                                        SyntaxFactory.MemberAccessExpression(
+                                            SyntaxKind.SimpleMemberAccessExpression,
+                                            SyntaxFactory.InvocationExpression(
+                                                SyntaxFactory.MemberAccessExpression(
+                                                    SyntaxKind.SimpleMemberAccessExpression,
+                                                    SyntaxFactory.IdentifierName("_nanoRpcClient"),
+                                                    SyntaxFactory.IdentifierName(Tools.ToPascalCase(rpcCall.MethodName))))
+                                            .WithArgumentList(
+                                                SyntaxFactory.ArgumentList(
+                                                    SyntaxFactory.SeparatedList(parameters))),
+                                            SyntaxFactory.IdentifierName("Result")))))));
             var assertStatement = SyntaxFactory.ExpressionStatement(
                                     SyntaxFactory.InvocationExpression(
                                         SyntaxFactory.MemberAccessExpression(
