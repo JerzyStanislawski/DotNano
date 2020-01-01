@@ -40,7 +40,7 @@ namespace DotNano.CodeGeneration
             testHttpMessageHandlerClass = testHttpMessageHandlerGenerator.AppendGetResponseReturnStatement(testHttpMessageHandlerClass);
 
             GenerateClassFile(rpcClientClass, "DotNano.RpcApi", $"NanoRpcClient.cs",
-                new [] { "System", "System.Collections.Generic", "System.Net.Http", "System.Numerics", "DotNano.RpcApi.Responses", "DotNano.Shared", "DotNano.Shared.DataTypes", "Newtonsoft.Json", "Newtonsoft.Json.Linq" });
+                new [] { "System", "System.Collections.Generic", "System.Net.Http", "System.Numerics", "System.Threading.Tasks", "DotNano.RpcApi.Responses", "DotNano.Shared", "DotNano.Shared.DataTypes", "Newtonsoft.Json", "Newtonsoft.Json.Linq" });
             GenerateClassFile(rpcClientTestClass, "DotNano.RpcApi.Tests", $"NanoRpcClientTests.cs",
                 new[] { "System", "System.Net.Http", "System.Numerics", "DotNano.Shared.DataTypes", "Xunit" });
             GenerateClassFile(testHttpMessageHandlerClass, "DotNano.RpcApi.Tests", $"TestHttpMessageHandler.cs",

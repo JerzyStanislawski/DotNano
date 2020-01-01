@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Numerics;
+using System.Threading.Tasks;
 using DotNano.RpcApi.Responses;
 using DotNano.Shared;
 using DotNano.Shared.DataTypes;
@@ -21,15 +22,15 @@ namespace DotNano.CodeGeneration
             _httpClient = httpClient ?? new HttpClient();
         }
 
-        private string CallRpcMethod(string json)
+        private async Task<string> CallRpcMethod(string json)
         {
             var content = new StringContent(json);
-            var responseMessage = _httpClient.PostAsync(_rpcUri, content).Result;
+            var responseMessage = await _httpClient.PostAsync(_rpcUri, content);
             
             if (!responseMessage.IsSuccessStatusCode)
                 throw new HttpRequestException($"Http status code: {responseMessage.StatusCode}");
             
-            return responseMessage.Content.ReadAsStringAsync().Result;
+            return await responseMessage.Content.ReadAsStringAsync();
         }
 
         public void Dispose()
@@ -37,7 +38,7 @@ namespace DotNano.CodeGeneration
             _httpClient.Dispose();
         }
 
-        public AccountsPendingResponseBase AccountsPending(IEnumerable<PublicAddress> accounts, Int64 count, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? sorting = null, Boolean? includeOnlyConfirmed = null)
+        public async Task<AccountsPendingResponseBase> AccountsPending(IEnumerable<PublicAddress> accounts, Int64 count, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? sorting = null, Boolean? includeOnlyConfirmed = null)
         {
             var jobject = new JObject();
             jobject["action"] = "accounts_pending";
@@ -53,7 +54,7 @@ namespace DotNano.CodeGeneration
                 jobject["sorting"] = sorting.ToString();
             if (includeOnlyConfirmed != null)
                 jobject["include_only_confirmed"] = includeOnlyConfirmed.ToString();
-            var response = CallRpcMethod(jobject.ToString());
+            var response = await CallRpcMethod(jobject.ToString());
 
             try
             {
@@ -65,7 +66,7 @@ namespace DotNano.CodeGeneration
             }
         }
 
-        public PendingResponseBase Pending(PublicAddress account, Int64? count = null, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? minVersion = null, Boolean? sorting = null, Boolean? includeOnlyConfirmed = null)
+        public async Task<PendingResponseBase> Pending(PublicAddress account, Int64? count = null, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? minVersion = null, Boolean? sorting = null, Boolean? includeOnlyConfirmed = null)
         {
             var jobject = new JObject();
             jobject["action"] = "pending";
@@ -84,7 +85,7 @@ namespace DotNano.CodeGeneration
                 jobject["sorting"] = sorting.ToString();
             if (includeOnlyConfirmed != null)
                 jobject["include_only_confirmed"] = includeOnlyConfirmed.ToString();
-            var response = CallRpcMethod(jobject.ToString());
+            var response = await CallRpcMethod(jobject.ToString());
 
             try
             {
@@ -96,13 +97,13 @@ namespace DotNano.CodeGeneration
             }
         }
 
-        public RepresentativesOnlineResponseBase RepresentativesOnline(Boolean? weight = null)
+        public async Task<RepresentativesOnlineResponseBase> RepresentativesOnline(Boolean? weight = null)
         {
             var jobject = new JObject();
             jobject["action"] = "representatives_online";
             if (weight != null)
                 jobject["weight"] = weight.ToString();
-            var response = CallRpcMethod(jobject.ToString());
+            var response = await CallRpcMethod(jobject.ToString());
 
             try
             {
@@ -114,7 +115,7 @@ namespace DotNano.CodeGeneration
             }
         }
 
-        public WalletPendingResponseBase WalletPending(HexKey64 wallet, Int64 count, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? minVersion = null, Boolean? includeOnlyConfirmed = null)
+        public async Task<WalletPendingResponseBase> WalletPending(HexKey64 wallet, Int64 count, BigInteger? threshold = null, Boolean? source = null, Boolean? includeActive = null, Boolean? minVersion = null, Boolean? includeOnlyConfirmed = null)
         {
             var jobject = new JObject();
             jobject["action"] = "wallet_pending";
@@ -130,7 +131,7 @@ namespace DotNano.CodeGeneration
                 jobject["min_version"] = minVersion.ToString();
             if (includeOnlyConfirmed != null)
                 jobject["include_only_confirmed"] = includeOnlyConfirmed.ToString();
-            var response = CallRpcMethod(jobject.ToString());
+            var response = await CallRpcMethod(jobject.ToString());
 
             try
             {
