@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -29,6 +30,8 @@ namespace DotNano.RpcApi
 
         private async Task<string> CallRpcMethod(string json)
         {
+            json = json.Replace("\"True\"", "\"true\"");
+            json = json.Replace("\"False\"", "\"false\"");
             var content = new StringContent(json);
             var responseMessage = await _httpClient.PostAsync(_rpcUri, content);
             if (!responseMessage.IsSuccessStatusCode)
@@ -60,11 +63,11 @@ namespace DotNano.RpcApi
             var response = await CallRpcMethod(jobject.ToString());
             try
             {
-                return JsonConvert.DeserializeObject<AccountsPendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<AccountsPendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
             catch
             {
-                return JsonConvert.DeserializeObject<AccountsPendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<AccountsPendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
         }
 
@@ -90,11 +93,11 @@ namespace DotNano.RpcApi
             var response = await CallRpcMethod(jobject.ToString());
             try
             {
-                return JsonConvert.DeserializeObject<PendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<PendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
             catch
             {
-                return JsonConvert.DeserializeObject<PendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<PendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
         }
 
@@ -107,11 +110,11 @@ namespace DotNano.RpcApi
             var response = await CallRpcMethod(jobject.ToString());
             try
             {
-                return JsonConvert.DeserializeObject<RepresentativesOnlineBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<RepresentativesOnlineResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
             catch
             {
-                return JsonConvert.DeserializeObject<RepresentativesOnlineResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<RepresentativesOnlineBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
         }
 
@@ -134,11 +137,11 @@ namespace DotNano.RpcApi
             var response = await CallRpcMethod(jobject.ToString());
             try
             {
-                return JsonConvert.DeserializeObject<WalletPendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<WalletPendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
             catch
             {
-                return JsonConvert.DeserializeObject<WalletPendingResponse>(response, JsonSerializationSettings.PascalCaseSettings);
+                return JsonConvert.DeserializeObject<WalletPendingBasicResponse>(response, JsonSerializationSettings.PascalCaseSettings);
             }
         }
 

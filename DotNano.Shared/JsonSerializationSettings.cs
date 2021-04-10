@@ -10,8 +10,7 @@ namespace DotNano.Shared
     {
         public static JsonSerializerSettings PascalCaseSettings = new JsonSerializerSettings()
         {
-            ContractResolver = new UnderscorePropertyNamesContractResolver(),
-            MissingMemberHandling = MissingMemberHandling.Error
+            ContractResolver = new UnderscorePropertyNamesContractResolver()
         };
     }
 
