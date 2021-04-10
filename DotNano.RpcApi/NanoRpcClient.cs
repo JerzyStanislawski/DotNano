@@ -21,6 +21,12 @@ namespace DotNano.RpcApi
             _httpClient = httpClient ?? new HttpClient();
         }
 
+        public NanoRpcClient(string uri)
+        {
+            _rpcUri = new Uri(uri);
+            _httpClient = new HttpClient();
+        }
+
         private async Task<string> CallRpcMethod(string json)
         {
             var content = new StringContent(json);
